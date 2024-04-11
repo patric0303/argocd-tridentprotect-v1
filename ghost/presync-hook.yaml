@@ -1,0 +1,10 @@
+apiVersion: astra.netapp.io/v1
+kind: Snapshot
+metadata:
+  generateName: ghost-snapshot-
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+  namespace: astra-connector
+spec:
+  appVaultRef: astra-gcp-backup-734ced050128
+  applicationRef: ghost
