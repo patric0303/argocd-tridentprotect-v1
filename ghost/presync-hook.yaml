@@ -4,7 +4,7 @@ metadata:
   generateName: ghost-snapshot-
   annotations:
     argocd.argoproj.io/hook: PreSync
-  namespace: astra-connector
+    argocd.argoproj.io/hook-delete-policy: HookFailed
 spec:
   appVaultRef: astra-gcp-backup-734ced050128
   applicationRef: ghost
