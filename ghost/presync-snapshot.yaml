@@ -5,6 +5,8 @@ metadata:
   namespace: astra-connector
   annotations:
     argocd.argoproj.io/sync-wave: "-5"
+  labels:
+    argocd.argoproj.io/instance: ghost-demo
 spec:
   appVaultRef: astra-gcp-backup-734ced050128
   applicationRef: ghost
