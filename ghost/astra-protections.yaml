@@ -1,7 +1,7 @@
 apiVersion: astra.netapp.io/v1
 kind: Schedule
 metadata:
-  generateName: ghost-hourly-
+  name: ghost-hourly
   namespace: astra-connector
 spec:
   appVaultRef: astra-gcp-backup-734ced050128
@@ -17,7 +17,7 @@ spec:
 apiVersion: astra.netapp.io/v1
 kind: Schedule
 metadata:
-  generateName: ghost-daily-
+  name: ghost-daily
   namespace: astra-connector
 spec:
   appVaultRef: astra-gcp-backup-734ced050128
@@ -33,7 +33,7 @@ spec:
 apiVersion: astra.netapp.io/v1
 kind: Schedule
 metadata:
-  generateName: ghost-weekly-
+  name: ghost-weekly
   namespace: astra-connector
 spec:
   appVaultRef: astra-gcp-backup-734ced050128
@@ -49,7 +49,7 @@ spec:
 apiVersion: astra.netapp.io/v1
 kind: Schedule
 metadata:
-  generateName: ghost-monthly-
+  name: ghost-monthly
   namespace: astra-connector
 spec:
   appVaultRef: astra-gcp-backup-734ced050128
