@@ -1,0 +1,63 @@
+apiVersion: astra.netapp.io/v1
+kind: Schedule
+metadata:
+  generateName: ghost-hourly-
+  namespace: astra-connector
+spec:
+  appVaultRef: astra-gcp-backup-734ced050128
+  applicationRef: ghost
+  backupRetention: "1"
+  dayOfMonth: ""
+  dayOfWeek: ""
+  granularity: hourly
+  hour: ""
+  minute: "0"
+  snapshotRetention: "1"
+---
+apiVersion: astra.netapp.io/v1
+kind: Schedule
+metadata:
+  generateName: ghost-daily-
+  namespace: astra-connector
+spec:
+  appVaultRef: astra-gcp-backup-734ced050128
+  applicationRef: ghost
+  backupRetention: "1"
+  dayOfMonth: ""
+  dayOfWeek: ""
+  granularity: daily
+  hour: "1"
+  minute: "0"
+  snapshotRetention: "1"
+---
+apiVersion: astra.netapp.io/v1
+kind: Schedule
+metadata:
+  generateName: ghost-weekly-
+  namespace: astra-connector
+spec:
+  appVaultRef: astra-gcp-backup-734ced050128
+  applicationRef: ghost
+  backupRetention: "1"
+  dayOfMonth: ""
+  dayOfWeek: "0"
+  granularity: weekly
+  hour: "2"
+  minute: "0"
+  snapshotRetention: "1"
+---
+apiVersion: astra.netapp.io/v1
+kind: Schedule
+metadata:
+  generateName: ghost-monthly-
+  namespace: astra-connector
+spec:
+  appVaultRef: astra-gcp-backup-734ced050128
+  applicationRef: ghost
+  backupRetention: "1"
+  dayOfMonth: "1"
+  dayOfWeek: ""
+  granularity: monthly
+  hour: "2"
+  minute: "0"
+  snapshotRetention: "1"
