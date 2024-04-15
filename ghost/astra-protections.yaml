@@ -13,7 +13,7 @@ spec:
   dayOfWeek: ""
   granularity: hourly
   hour: ""
-  minute: "0"
+  minute: "25"
   snapshotRetention: "1"
 ---
 apiVersion: astra.netapp.io/v1
