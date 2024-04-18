@@ -34,9 +34,10 @@ kind: Job
 metadata:
   annotations:
     argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
   labels:
     app: actoolkit
-  name: actoolkit
+  generateName: presync-astra-snapshot-
   namespace: astra-connector
 spec:
   jobTemplate:
@@ -62,3 +63,5 @@ spec:
                 - >
                   pip install actoolkit==$ACTOOLKIT_VERSION &&
                   actoolkit create snapshot $APP_NAME argo-presync-`date "+%Y%m%d%H%M%S"`
+      restartPolicy: Never
+  backoffLimit: 1
