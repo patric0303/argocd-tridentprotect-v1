@@ -40,28 +40,25 @@ metadata:
   generateName: presync-astra-snapshot-
   namespace: astra-connector
 spec:
-  jobTemplate:
+  template:
+    metadata:
+      labels:
+        app: actoolkit
     spec:
-      template:
-        metadata:
-          labels:
-            app: actoolkit
-        spec:
-          serviceAccountName: actoolkit
-          restartPolicy: Never
-          containers:
-            - name: alpine-actoolkit
-              image: python:3.10.13-alpine3.19
-              env:
-                - name: ACTOOLKIT_VERSION
-                  value: "3.0.1b2"
-                - name: APP_NAME
-                  value: ghost
-              command: ["/bin/sh"]
-              args:
-                - -c
-                - >
-                  pip install actoolkit==$ACTOOLKIT_VERSION &&
-                  actoolkit create snapshot $APP_NAME argo-presync-`date "+%Y%m%d%H%M%S"`
+      serviceAccountName: actoolkit
       restartPolicy: Never
-  backoffLimit: 1
+      containers:
+        - name: alpine-actoolkit
+          image: python:3.10.13-alpine3.19
+          env:
+            - name: ACTOOLKIT_VERSION
+              value: "3.0.1b2"
+            - name: APP_NAME
+              value: ghost
+          command: ["/bin/sh"]
+          args:
+            - -c
+            - >
+              pip install actoolkit==$ACTOOLKIT_VERSION &&
+              actoolkit create snapshot $APP_NAME argo-presync-`date "+%Y%m%d%H%M%S"`
+backoffLimit: 1
