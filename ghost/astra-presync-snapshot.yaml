@@ -1,12 +1,64 @@
-apiVersion: astra.netapp.io/v1
-kind: Snapshot
+apiVersion: v1
+kind: ServiceAccount
 metadata:
-  generateName: ghost-snapshot-
+  name: actoolkit
   namespace: astra-connector
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: actoolkit
+rules:
+  - apiGroups: ["astra.netapp.io"]
+    resources: ["*"]
+    verbs: ["*"]
+  - apiGroups: [""]
+    resources: ["namespaces"]
+    verbs: ["get", "watch", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: actoolkit
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: actoolkit
+subjects:
+  - kind: ServiceAccount
+    name: actoolkit
+    namespace: astra-connector
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
   annotations:
     argocd.argoproj.io/hook: PreSync
   labels:
-    argocd.argoproj.io/instance: ghost-demo
+    app: actoolkit
+  name: actoolkit
+  namespace: astra-connector
 spec:
-  appVaultRef: astra-gcp-backup-734ced050128
-  applicationRef: ghost
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: actoolkit
+        spec:
+          serviceAccountName: actoolkit
+          restartPolicy: Never
+          containers:
+            - name: alpine-actoolkit
+              image: python:3.10.13-alpine3.19
+              env:
+                - name: ACTOOLKIT_VERSION
+                  value: "3.0.1b2"
+                - name: APP_NAME
+                  value: ghost
+              command: ["/bin/sh"]
+              args:
+                - -c
+                - >
+                  pip install actoolkit==$ACTOOLKIT_VERSION &&
+                  actoolkit create snapshot $APP_NAME argo-presync-`date "+%Y%m%d%H%M%S"`
