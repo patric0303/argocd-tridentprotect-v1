@@ -60,5 +60,5 @@ spec:
             - -c
             - >
               pip install actoolkit==$ACTOOLKIT_VERSION &&
-              actoolkit create snapshot $APP_NAME argo-presync-`date "+%Y%m%d%H%M%S"`
-backoffLimit: 1
+              actoolkit --v3 create snapshot $APP_NAME argo-presync-`date "+%Y%m%d%H%M%S"`
+  backoffLimit: 1
