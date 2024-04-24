@@ -3,8 +3,6 @@ kind: Schedule
 metadata:
   name: ghost-hourly
   namespace: astra-connector
-  labels:
-    argocd.argoproj.io/instance: ghost-demo
 spec:
   appVaultRef: astra-gcp-backup-734ced050128
   applicationRef: ghost
@@ -21,8 +19,6 @@ kind: Schedule
 metadata:
   name: ghost-daily
   namespace: astra-connector
-  labels:
-    argocd.argoproj.io/instance: ghost-demo
 spec:
   appVaultRef: astra-gcp-backup-734ced050128
   applicationRef: ghost
