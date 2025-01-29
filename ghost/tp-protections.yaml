@@ -1,63 +1,63 @@
-apiVersion: astra.netapp.io/v1
+apiVersion: protect.trident.netapp.io/v1
 kind: Schedule
 metadata:
   name: ghost-hourly
-  namespace: astra-connector
+  namespace: ghost
 spec:
-  appVaultRef: astra-gcp-backup-734ced050128
+  appVaultRef: argocdtest
   applicationRef: ghost
   backupRetention: "1"
   dayOfMonth: ""
   dayOfWeek: ""
-  granularity: hourly
+  granularity: Hourly
   hour: ""
   minute: "50"
   snapshotRetention: "1"
 ---
-apiVersion: astra.netapp.io/v1
+apiVersion: protect.trident.netapp.io/v1
 kind: Schedule
 metadata:
   name: ghost-daily
-  namespace: astra-connector
+  namespace: ghost
 spec:
-  appVaultRef: astra-gcp-backup-734ced050128
+  appVaultRef: argocdtest
   applicationRef: ghost
   backupRetention: "1"
   dayOfMonth: ""
   dayOfWeek: ""
-  granularity: daily
+  granularity: Daily
   hour: "1"
   minute: "0"
   snapshotRetention: "1"
 ---
-apiVersion: astra.netapp.io/v1
+apiVersion: protect.trident.netapp.io/v1
 kind: Schedule
 metadata:
   name: ghost-weekly
-  namespace: astra-connector
+  namespace: ghost
 spec:
-  appVaultRef: astra-gcp-backup-734ced050128
+  appVaultRef: argocdtest
   applicationRef: ghost
   backupRetention: "1"
   dayOfMonth: ""
-  dayOfWeek: "0"
-  granularity: weekly
+  dayOfWeek: "7"
+  granularity: Weekly
   hour: "2"
   minute: "0"
   snapshotRetention: "1"
 ---
-apiVersion: astra.netapp.io/v1
+apiVersion: protect.trident.netapp.io/v1
 kind: Schedule
 metadata:
   name: ghost-monthly
-  namespace: astra-connector
+  namespace: ghost
 spec:
-  appVaultRef: astra-gcp-backup-734ced050128
+  appVaultRef: argocdtest
   applicationRef: ghost
   backupRetention: "1"
   dayOfMonth: "1"
   dayOfWeek: ""
-  granularity: monthly
+  granularity: Monthly
   hour: "2"
-  minute: "0"
+  minute: "20"
   snapshotRetention: "1"

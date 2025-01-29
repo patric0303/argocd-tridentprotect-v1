@@ -1,8 +1,0 @@
-apiVersion: astra.netapp.io/v1
-kind: Application
-metadata:
-  name: ghost
-  namespace: astra-connector
-spec:
-  includedNamespaces:
-    - namespace: ghost
