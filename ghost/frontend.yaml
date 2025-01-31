@@ -30,7 +30,7 @@ metadata:
     volume: persistent
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: "100Gi"
@@ -48,7 +48,7 @@ spec:
     matchLabels:
       name: ghost
       instance: ghost
-  replicas: 2
+  replicas: 1
   strategy:
     type: RollingUpdate
   template:
