@@ -1,0 +1,35 @@
+apiVersion: protect.trident.netapp.io/v1
+kind: ExecHook
+metadata:
+  name: pre-snapshot-mysql
+  namespace: ghost
+spec:
+  action: Snapshot
+  stage: Pre
+  applicationRef: ghost
+  timeout: 5
+  arguments:
+    - pre
+  enabled:
+    true
+  hookSource: IyEvYmluL3NoCgojCiMgc3VjY2Vzc19zYW1wbGUuc2gKIwojIEEgc2ltcGxlIG5vb3Agc3VjY2VzcyBob29rIHNjcmlwdCBmb3IgdGVzdGluZyBwdXJwb3Nlcy4KIwojIGFyZ3M6IE5vbmUKIwoKCiMKIyBXcml0ZXMgdGhlIGdpdmVuIG1lc3NhZ2UgdG8gc3RhbmRhcmQgb3V0cHV0CiMKIyAkKiAtIFRoZSBtZXNzYWdlIHRvIHdyaXRlCiMKbXNnKCkgewogICAgZWNobyAiJCoiCn0KCgojCiMgV3JpdGVzIHRoZSBnaXZlbiBpbmZvcm1hdGlvbiBtZXNzYWdlIHRvIHN0YW5kYXJkIG91dHB1dAojCiMgJCogLSBUaGUgbWVzc2FnZSB0byB3cml0ZQojCmluZm8oKSB7CiAgICBtc2cgIklORk86ICQqIgp9CgojCiMgV3JpdGVzIHRoZSBnaXZlbiBlcnJvciBtZXNzYWdlIHRvIHN0YW5kYXJkIGVycm9yCiMKIyAkKiAtIFRoZSBtZXNzYWdlIHRvIHdyaXRlCiMKZXJyb3IoKSB7CiAgICBtc2cgIkVSUk9SOiAkKiIgMT4mMgp9CgoKIwojIG1haW4KIwoKIyBsb2cgc29tZXRoaW5nIHRvIHN0ZG91dAppbmZvICJydW5uaW5nIHN1Y2Nlc3Nfc2FtcGxlLnNoIgoKIyBleGl0IHdpdGggMCB0byBpbmRpY2F0ZSBzdWNjZXNzIAppbmZvICJleGl0IDAiCnNsZWVwIDMwMApleGl0IDA=
+  matchingCriteria:
+    - type: containerImage
+      value: mysql
+---
+apiVersion: astra.netapp.io/v1
+kind: ExecHook
+metadata:
+  name: post-snapshot-mysql
+  namespace: ghost
+spec:
+  action: Snapshot
+  stage: Post
+  applicationRef: ghost
+  arguments:
+    - post
+  enabled: true
+  hookSource: IyEvYmluL3NoCgojCiMgc3VjY2Vzc19zYW1wbGUuc2gKIwojIEEgc2ltcGxlIG5vb3Agc3VjY2VzcyBob29rIHNjcmlwdCBmb3IgdGVzdGluZyBwdXJwb3Nlcy4KIwojIGFyZ3M6IE5vbmUKIwoKCiMKIyBXcml0ZXMgdGhlIGdpdmVuIG1lc3NhZ2UgdG8gc3RhbmRhcmQgb3V0cHV0CiMKIyAkKiAtIFRoZSBtZXNzYWdlIHRvIHdyaXRlCiMKbXNnKCkgewogICAgZWNobyAiJCoiCn0KCgojCiMgV3JpdGVzIHRoZSBnaXZlbiBpbmZvcm1hdGlvbiBtZXNzYWdlIHRvIHN0YW5kYXJkIG91dHB1dAojCiMgJCogLSBUaGUgbWVzc2FnZSB0byB3cml0ZQojCmluZm8oKSB7CiAgICBtc2cgIklORk86ICQqIgp9CgojCiMgV3JpdGVzIHRoZSBnaXZlbiBlcnJvciBtZXNzYWdlIHRvIHN0YW5kYXJkIGVycm9yCiMKIyAkKiAtIFRoZSBtZXNzYWdlIHRvIHdyaXRlCiMKZXJyb3IoKSB7CiAgICBtc2cgIkVSUk9SOiAkKiIgMT4mMgp9CgoKIwojIG1haW4KIwoKIyBsb2cgc29tZXRoaW5nIHRvIHN0ZG91dAppbmZvICJydW5uaW5nIHN1Y2Nlc3Nfc2FtcGxlLnNoIgoKIyBleGl0IHdpdGggMCB0byBpbmRpY2F0ZSBzdWNjZXNzIAppbmZvICJleGl0IDAiCnNsZWVwIDMwMApleGl0IDA=
+  matchingCriteria:
+    - type: containerImage
+      value: mysql
