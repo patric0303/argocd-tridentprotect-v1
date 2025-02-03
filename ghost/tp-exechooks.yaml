@@ -17,7 +17,7 @@ spec:
     - type: containerImage
       value: mysql
 ---
-apiVersion: astra.netapp.io/v1
+apiVersion: protect.trident.netapp.io/v1
 kind: ExecHook
 metadata:
   name: post-snapshot-mysql
