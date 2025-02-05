@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ghost-demo-2
+spec:
+  destination:
+    name: ''
+    namespace: ghost-2
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: ghost-dataonly
+    repoURL: 'https://github.com/patric0303/argocd-tridentprotect-v1'
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
