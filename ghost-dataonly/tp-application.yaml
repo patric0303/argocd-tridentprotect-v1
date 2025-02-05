@@ -1,0 +1,11 @@
+apiVersion: protect.trident.netapp.io/v1
+kind: Application
+metadata:
+  name: ghost-dataonly
+  namespace: ghost-2
+spec:
+  includedNamespaces:
+  - labelSelector:
+      matchLabels:
+        volume: persistent
+    namespace: ghost-2

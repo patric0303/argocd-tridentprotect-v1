@@ -1,0 +1,63 @@
+apiVersion: protect.trident.netapp.io/v1
+kind: Schedule
+metadata:
+  name: ghost-dataonly-hourly
+  namespace: ghost-2
+spec:
+  appVaultRef: argocdtest
+  applicationRef: ghost-dataonly
+  backupRetention: "1"
+  dayOfMonth: ""
+  dayOfWeek: ""
+  granularity: Hourly
+  hour: ""
+  minute: "50"
+  snapshotRetention: "1"
+---
+apiVersion: protect.trident.netapp.io/v1
+kind: Schedule
+metadata:
+  name: ghost-dataonly-daily
+  namespace: ghost-2
+spec:
+  appVaultRef: argocdtest
+  applicationRef: ghost-dataonly
+  backupRetention: "1"
+  dayOfMonth: ""
+  dayOfWeek: ""
+  granularity: Daily
+  hour: "1"
+  minute: "0"
+  snapshotRetention: "1"
+---
+apiVersion: protect.trident.netapp.io/v1
+kind: Schedule
+metadata:
+  name: ghost-dataonly-weekly
+  namespace: ghost-2
+spec:
+  appVaultRef: argocdtest
+  applicationRef: ghost-dataonly
+  backupRetention: "2"
+  dayOfMonth: ""
+  dayOfWeek: "7"
+  granularity: Weekly
+  hour: "2"
+  minute: "0"
+  snapshotRetention: "1"
+---
+apiVersion: protect.trident.netapp.io/v1
+kind: Schedule
+metadata:
+  name: ghost-dataonly-monthly
+  namespace: ghost-2
+spec:
+  appVaultRef: argocdtest
+  applicationRef: ghost-dataonly
+  backupRetention: "1"
+  dayOfMonth: "1"
+  dayOfWeek: ""
+  granularity: Monthly
+  hour: "2"
+  minute: "20"
+  snapshotRetention: "1"

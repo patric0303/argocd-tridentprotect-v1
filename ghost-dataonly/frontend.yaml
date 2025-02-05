@@ -95,11 +95,11 @@ spec:
                   name: ghost
                   key: ghost-password
             - name: GHOST_HOST
-              value: "ghost.pu-store.de/"
+              value: "ghost-2.pu-store.de/"
             - name: GHOST_EMAIL
               value: "user@example.com"
             - name: GHOST_BLOG_TITLE
-              value: "User's Blog"
+              value: "User's 2nd Blog"
             - name: GHOST_ENABLE_HTTPS
               value: "no"
             - name: GHOST_SKIP_BOOTSTRAP
