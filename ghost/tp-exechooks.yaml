@@ -7,7 +7,7 @@ spec:
   action: Snapshot
   stage: Pre
   applicationRef: ghost
-  timeout: 5
+  timeout: 1
   arguments:
     - pre
   enabled:
