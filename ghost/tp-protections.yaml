@@ -38,7 +38,7 @@ metadata:
 spec:
   appVaultRef: argocdtest
   applicationRef: ghost
-  backupRetention: "2"
+  backupRetention: "3"
   dayOfMonth: ""
   dayOfWeek: "7"
   granularity: Weekly
